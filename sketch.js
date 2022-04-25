@@ -50,8 +50,6 @@ function setup() {
  cnv = createCanvas(600, 600);
   centerCanvas();
   
-  getAudioContext().suspend();
-  
   // DeviceOrientationEvent, DeviceMotionEvent
   if (typeof(DeviceOrientationEvent) !== 'undefined' && typeof(DeviceOrientationEvent.requestPermission) === 'function') {
     // ios 13 device
@@ -75,7 +73,9 @@ function setup() {
     // text("non ios 13 device", 100, 100);
     permissionGranted = true;
   }
-
+  
+  getAudioContext().suspend();
+  
   //borders
   layers.push(
     Bodies.rectangle(300, 600, 600, 20, { isStatic: true, label: "wall" })
